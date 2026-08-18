@@ -1,0 +1,27 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+  external_labels:
+    prometheus_id: "snmpmon"
+
+scrape_configs:
+  - job_name: 'snmp'
+    static_configs:
+      - targets:
+        - 192.168.0.1
+        - 192.168.0.2
+    metrics_path: /snmp
+    params:
+      auth: [public_v2]
+      module: [if_mib]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: snmpexporter:9116
+
+  - job_name: 'snmp_exporter'
+    static_configs:
+      - targets: ['snmpexporter:9116']
