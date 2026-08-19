@@ -14,7 +14,7 @@ services:
           memory: 512m
 
   prometheus:
-    image: prom/prometheus:v3.13.2
+    image: prom/prometheus:v3.14.0
     hostname: prometheus
     container_name: snmpmon__prometheus
     restart: unless-stopped
