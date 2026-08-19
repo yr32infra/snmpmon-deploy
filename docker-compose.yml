@@ -3,6 +3,7 @@ services:
   snmpexporter:
     image: prom/snmp-exporter:v0.30.1
     hostname: snmpexporter
+    container_name: snmpmon__snmpexporter
     restart: unless-stopped
 
     networks:
