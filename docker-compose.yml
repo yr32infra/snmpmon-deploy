@@ -46,7 +46,7 @@ services:
           memory: 2048m
 
   cloudflared:
-    image: cloudflare/cloudflared:2026.8.2
+    image: cloudflare/cloudflared:2026.8.3
     hostname: cloudflared
     container_name: snmpmon__cloudflared
     restart: unless-stopped
